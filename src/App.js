@@ -1,7 +1,6 @@
 import React, { Component } from 'pureact'
-import logo from './logo.svg'
 import store from './store'
-import './App.css'
+import 'todomvc-app-css/index.css';
 
 class App extends Component {
   render() {
@@ -28,7 +27,7 @@ class App extends Component {
           </ul>
         </section>
         <footer className="footer">
-          <span className="todo-count"><strong>{this.props.todos.filter(todo => !todo.checked).length || '0'}</strong> item left</span>
+          <span className="todo-count"><strong>{this.todos('active').length || '0'}</strong> item left</span>
           <ul className="filters">
             <li>
               <a href="#" className={this.props.filter === 'all' ? 'selected' : ''} onclick={e => this.setFilter('all')}>All</a>
@@ -40,38 +39,42 @@ class App extends Component {
               <a href="#" className={this.props.filter === 'completed' ? 'selected' : ''} onclick={e => this.setFilter('completed')}>Completed</a>
             </li>
           </ul>
-          {this.props.todos.filter(todo=>todo.checked).length && <button onclick={e => this.clearCompleted()} className="clear-completed">Clear completed</button>}
+          {this.todos('active').length && <button onclick={e => this.clearCompleted()} className="clear-completed">Clear completed</button>}
         </footer>
       </section>
     )
   }
+
+  /* View methods */
   submit(e){
     if (e.keyCode === 13) {
       this.add(e.target.value)
     } else {
-      this.change(e.target.value)
+      this.changeTitle(e.target.value)
     }
   }
   todos(filter = 'all'){
     return this.props.todos.filter(todo => filter === 'all' || filter === 'completed' && todo.checked || filter === 'active' && !todo.checked)
-  }
-  setFilter(filter){
-    store.dispatch({type:'SET_FILTER', filter})
-  }
-  add(title){
-    store.dispatch({type:'ADD_TODO', title})
-  }
-  change(title){
-    store.dispatch({type:'CHANGE_NEW_TITLE', title})
-  }
-  check(id, checked){
-    store.dispatch({type:'CHANGE_CHECKED', id, checked})
   }
   clearCompleted(){
     this.props.todos
       .filter(todo => todo.checked)
       .map(todo => todo.id)
       .map(this.remove)
+  }
+  setFilter(filter){
+    store.dispatch({type:'SET_FILTER', filter})
+  }
+
+  /* Storage methods */
+  add(title){
+    store.dispatch({type:'ADD_TODO', title})
+  }
+  changeTitle(title){
+    store.dispatch({type:'CHANGE_NEW_TITLE', title})
+  }
+  check(id, checked){
+    store.dispatch({type:'CHANGE_CHECKED', id, checked})
   }
   remove(id){
     store.dispatch({type:'REMOVE_TODO', id})

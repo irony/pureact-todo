@@ -1,11 +1,9 @@
-import React, {render} from 'pureact';
-import App from './App';
-import './index.css';
-import 'todomvc-app-css/index.css';
+import React, {render} from 'pureact'
+import App from './App'
 import store from './store'
 
 let oldTree
 store.subscribe(() => {
   const state = store.getState()
-  oldTree = render(<App {...state} />, document.getElementById('root'), oldTree);
+  oldTree = render(<App {...state} />, document.getElementById('root'), oldTree)
 })
