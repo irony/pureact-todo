@@ -1,6 +1,7 @@
 import React, {render} from 'pureact';
 import App from './App';
 import './index.css';
+import 'todomvc-app-css/index.css';
 import store from './store'
 
 let oldTree

@@ -13,6 +13,7 @@ const todos = (state, action) => {
     case 'REMOVE_TODO': return {...state, todos: [...state.todos.filter(todo => todo.id !== action.id) ]}
     case 'CHECK_ALL': return {...state, todos: state.todos.map(todo => ({...todo, checked: true}))}
     case 'UNCHECK_ALL': return {...state, todos: state.todos.map(todo => ({...todo, checked: false}))}
+    case 'SET_FILTER': return {...state, filter: action.filter }
     default: return state
   }
 }
