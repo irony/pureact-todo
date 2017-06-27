@@ -2,7 +2,7 @@
   "name": "pureact-todo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://irony.github.io/pureact-todo",
+  "homepage": "https://pureact-todo-hfnljqkpst.now.sh",
   "dependencies": {
     "gh-pages": "^1.0.0",
     "pureact": "^0.9.7",

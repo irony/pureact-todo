@@ -1,5 +1,5 @@
 import React, {render} from 'pureact'
-import App from './App'
+import App from './components/App'
 import store from './store'
 
 let oldTree

@@ -17,3 +17,4 @@ This is a very simple example app to show how to structure a simple todo app wit
 
 ## Demo
 
+[https://pureact-todo.now.sh](https://pureact-todo-vsstwhdstj.now.sh/)
