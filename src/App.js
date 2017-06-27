@@ -4,24 +4,6 @@ import store from './store'
 import './App.css'
 
 class App extends Component {
-  add(title){
-    store.dispatch({type:'ADD_TODO', title})
-  }
-  change(title){
-    store.dispatch({type:'CHANGE_NEW_TITLE', title})
-  }
-  check(id, checked){
-    store.dispatch({type:'CHANGE_CHECKED', id, checked})
-  }
-  remove(id){
-    store.dispatch({type:'REMOVE_TODO', id})
-  }
-  checkAll(){
-    store.dispatch({type:'CHECK_ALL'})
-  }
-  uncheckAll(){
-    store.dispatch({type:'UNCHECK_ALL'})
-  }
   render() {
     return (
       <div className="App">
@@ -48,6 +30,24 @@ class App extends Component {
         </ul>
       </div>
     )
+  }
+  add(title){
+    store.dispatch({type:'ADD_TODO', title})
+  }
+  change(title){
+    store.dispatch({type:'CHANGE_NEW_TITLE', title})
+  }
+  check(id, checked){
+    store.dispatch({type:'CHANGE_CHECKED', id, checked})
+  }
+  remove(id){
+    store.dispatch({type:'REMOVE_TODO', id})
+  }
+  checkAll(){
+    store.dispatch({type:'CHECK_ALL'})
+  }
+  uncheckAll(){
+    store.dispatch({type:'UNCHECK_ALL'})
   }
 }
 
