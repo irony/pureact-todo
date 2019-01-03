@@ -14,7 +14,7 @@ const clearCompleted = (todos) => todos
 const checkAll = () => store.dispatch({type:'CHECK_ALL'})
 const uncheckAll = () => store.dispatch({type:'UNCHECK_ALL'})
 
-function App ({newTitle, todos}) {
+function App ({todos}) {
   const [filter, setFilter] = useState('all')
   const count = filter => select(todos, filter).length
   const filtered = select(todos, filter)
@@ -22,7 +22,7 @@ function App ({newTitle, todos}) {
     <section className="todoapp">
       <header className="header">
         <h1>Pureact Todo</h1>
-        <NewTodo title={newTitle} />
+        <NewTodo />
       </header>
       <section className="main">
         <input className="toggle-all" type="checkbox" checked={count('completed')} change={e => e.target.checked ? checkAll() : uncheckAll()}/>

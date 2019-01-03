@@ -1,15 +1,13 @@
 import {createStore} from 'pureact'
 
 const initialState = {
-  todos: [],
-  newTitle: ''
+  todos: []
 }
 
 const todos = (state, action) => {
   switch(action.type) {
-    case 'CHANGE_NEW_TITLE': return {...state, newTitle: action.title}
     case 'CHANGE_CHECKED': return {...state, todos: [...state.todos.map(todo => todo.id === action.id ? {...todo, checked: action.checked} : todo) ]}
-    case 'ADD_TODO': return {...state, newTitle: '', focus: true, todos: [...state.todos, { title: action.title, id: Math.random() }]}
+    case 'ADD_TODO': return {...state, focus: true, todos: [...state.todos, { title: action.title, id: Math.random() }]}
     case 'REMOVE_TODO': return {...state, todos: [...state.todos.filter(todo => todo.id !== action.id) ]}
     case 'CHECK_ALL': return {...state, todos: state.todos.map(todo => ({...todo, checked: true}))}
     case 'UNCHECK_ALL': return {...state, todos: state.todos.map(todo => ({...todo, checked: false}))}
