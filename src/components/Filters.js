@@ -7,16 +7,14 @@ const Filter = ({filter, active, setFilter}) => (
   </li>
 )
 
-class Filters extends Component {
-  render(){
-    return (<ul className="filters">
-      {this.props.filters.map(filter => <Filter filter={filter} active={this.props.active} setFilter={this.setFilter} />)}
-    </ul>)
-  }
-  setFilter(filter){
-    store.dispatch({type:'SET_FILTER', filter})
-  }
+const setFilter = (filter) => store.dispatch({type:'SET_FILTER', filter})
 
+function Filters ({active, filters}) {
+  return (
+    <ul className="filters">
+      {filters.map(filter => <Filter filter={filter} active={active} setFilter={setFilter} />)}
+    </ul>
+  )
 }
 
 export default Filters

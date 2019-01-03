@@ -1,23 +1,22 @@
 import React, { Component } from 'pureact'
 import store from '../store'
 
-class NewTodo extends Component {
-  render() {
-    return <input className="new-todo" placeholder="What needs to be done?" value={this.props.title} onkeyup={this.submit.bind(this)} autofocus/>
+const submit = (e) => {
+  if (e.keyCode === 13) {
+    add(e.target.value)
+  } else {
+    changeTitle(e.target.value)
   }
-  submit(e){
-    if (e.keyCode === 13) {
-      this.add(e.target.value)
-    } else {
-      this.changeTitle(e.target.value)
-    }
-  }
-  add(title){
-    store.dispatch({type:'ADD_TODO', title})
-  }
-  changeTitle(title){
-    store.dispatch({type:'CHANGE_NEW_TITLE', title})
-  }
+}
+const add = (title) => {
+  store.dispatch({type:'ADD_TODO', title})
+}
+const changeTitle = (title) => {
+  store.dispatch({type:'CHANGE_NEW_TITLE', title})
+}
+
+function NewTodo ({title}) {
+  return <input className="new-todo" placeholder="What needs to be done?" value={title} onkeyup={submit} autofocus/>
 }
 
 export default NewTodo
