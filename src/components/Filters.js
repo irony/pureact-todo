@@ -1,18 +1,16 @@
 import React, { Component } from 'pureact'
 import store from '../store' 
 
-const Filter = ({filter, active, setFilter}) => (
-  <li>
-    <a href="#" className={filter === active ? 'selected' : ''} onclick={e => setFilter(filter)}>{filter}</a>
-  </li>
-)
-
-const setFilter = (filter) => store.dispatch({type:'SET_FILTER', filter})
-
-function Filters ({active, filters}) {
+function Filters ({active, filters, setFilter}) {
   return (
     <ul className="filters">
-      {filters.map(filter => <Filter filter={filter} active={active} setFilter={setFilter} />)}
+      {
+        filters.map(filter => (
+          <li>
+            <a href="#" className={filter === active ? 'selected' : ''} onclick={e => setFilter(filter)}>{filter}</a>
+          </li>
+        ))
+      }
     </ul>
   )
 }
