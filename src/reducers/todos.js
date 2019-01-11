@@ -1,10 +1,5 @@
-import {createStore} from 'pureact'
 
-const initialState = {
-  todos: []
-}
-
-const todos = (state, action) => {
+function reducer (state, action) {
   switch(action.type) {
     case 'CHANGE_CHECKED': return {...state, todos: [...state.todos.map(todo => todo.id === action.id ? {...todo, checked: action.checked} : todo) ]}
     case 'ADD_TODO': return {...state, focus: true, todos: [...state.todos, { title: action.title, id: Math.random() }]}
@@ -15,6 +10,5 @@ const todos = (state, action) => {
     default: return state
   }
 }
-const store = createStore(todos, initialState)
 
-export default store
+export default reducer

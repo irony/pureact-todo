@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://pureact-todo-hfnljqkpst.now.sh",
   "dependencies": {
-    "gh-pages": "^1.0.0",
     "pureact": "^1.1.0",
     "todomvc-app-css": "^2.1.0"
   },

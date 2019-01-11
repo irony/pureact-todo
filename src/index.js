@@ -1,9 +1,9 @@
 import React, {render} from 'pureact'
 import App from './components/App'
-import store from './store'
+import context from './context'
 
 let oldTree
-store.subscribe(() => {
-  const state = store.getState()
+context.subscribe(() => {
+  const state = context.getState()
   oldTree = render(<App {...state} />, document.getElementById('root'), oldTree)
 })

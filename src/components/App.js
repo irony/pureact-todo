@@ -1,41 +1,39 @@
 import React, { useState } from 'pureact'
-import store from '../store' 
+import Store from '../context' 
 import Todo from './Todo'
+import {Main, Header, Footer} from './Boilerplate'
 import NewTodo from './NewTodo'
 import Filters from './Filters'
 import 'todomvc-app-css/index.css';
+const {dispatch} = Store
 
 const select = (todos, filter) => todos.filter(todo => filter === 'all' || filter === 'completed' && todo.checked || filter === 'active' && !todo.checked)
-const clearCompleted = (todos) => todos
-  .filter(todo => todo.checked)
-  .map(todo => todo.id)
-  .map(id => store.dispatch({type:'REMOVE_TODO', id}))
+const checkAll = () => dispatch({type:'CHECK_ALL'})
+const uncheckAll = () => dispatch({type:'UNCHECK_ALL'})
+const remove = ({id}) => dispatch({type: 'REMOVE_TODO', id})
+const removeCompleted = (todos) => select(todos, 'completed').map(remove)
 
-const checkAll = () => store.dispatch({type:'CHECK_ALL'})
-const uncheckAll = () => store.dispatch({type:'UNCHECK_ALL'})
 
 function App ({todos}) {
   const [filter, setFilter] = useState('all')
-  const count = filter => select(todos, filter).length
   const filtered = select(todos, filter)
+  const count = filter => select(todos, filter).length
   return (
     <section className="todoapp">
-      <header className="header">
-        <h1>Pureact Todo</h1>
+      <Header title="Pureact Todo" >
         <NewTodo />
-      </header>
-      <section className="main">
+      </Header>
+      <Main>
         <input className="toggle-all" type="checkbox" checked={count('completed')} change={e => e.target.checked ? checkAll() : uncheckAll()}/>
         <label htmlFor="toggle-all">Mark all as {count('active') ? 'complete':'uncomplete'}</label>
         <ul className="todo-list">
           {filtered.map(todo => <Todo todo={todo} />)}
         </ul>
-      </section>
-      <footer className="footer">
-        <span className="todo-count"><strong>{count('active') || '0'}</strong> item left</span>
+      </Main>
+      <Footer countActive={count('active') || '0'}>
         <Filters setFilter={setFilter} filters={['all', 'active', 'completed']} active={filter} />
-        {count('completed') && <button onclick={e => clearCompleted(todos)} className="clear-completed">Clear completed</button>}
-      </footer>
+        {count('completed') && <button onclick={e => removeCompleted(todos)} className="clear-completed">Clear completed</button>}
+      </Footer>
     </section>
   )
 
