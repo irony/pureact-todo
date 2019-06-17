@@ -1,7 +1,9 @@
 import React, { useState } from 'pureact'
-import Store from '../context' 
+import Store from '../store' 
 import Todo from './Todo'
-import {Main, Header, Footer} from './Boilerplate'
+import Main from './Main'
+import Header from './Header'
+import Footer from './Footer'
 import NewTodo from './NewTodo'
 import Filters from './Filters'
 import 'todomvc-app-css/index.css';
@@ -30,7 +32,7 @@ function App ({todos}) {
           {filtered.map(todo => <Todo todo={todo} />)}
         </ul>
       </Main>
-      <Footer countActive={count('active') || '0'}>
+      <Footer activeCount={count('active') || '0'}>
         <Filters setFilter={setFilter} filters={['all', 'active', 'completed']} active={filter} />
         {count('completed') && <button onclick={e => removeCompleted(todos)} className="clear-completed">Clear completed</button>}
       </Footer>

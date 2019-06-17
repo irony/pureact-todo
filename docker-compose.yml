@@ -1,0 +1,4 @@
+web:
+  image: irony/pureact-todo
+  ports:
+    - 3000:3000

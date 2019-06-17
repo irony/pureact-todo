@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'pureact'
-import Store from '../context'
+import store from '../store'
 
 function NewTodo () {
   const [title, setTitle] = useState('')
-  const {dispatch} = useContext(Store)
+  const {dispatch} = useContext(store)
   const submit = ({keyCode, target: {value}}) => {
     if (keyCode === 13 && value.length > 0) {
       setTitle('')

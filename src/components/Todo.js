@@ -1,6 +1,6 @@
 import React, {useContext} from 'pureact'
-import Store from '../context'
-const {dispatch} = useContext(Store)
+import store from '../store'
+const {dispatch} = useContext(store)
 const check = ({id, checked}) => dispatch({type:'CHANGE_CHECKED', id, checked})
 const remove = ({id}) => dispatch({type:'REMOVE_TODO', id})
 
