@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "name": "pureact-todo",
+  "builds": [
+      { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "build" } }
+  ],
+  "routes": [
+    { "src": "/public/(.*)", "headers": { "cache-control": "s-maxage=31536000,immutable" }, "dest": "/public/$1" },
+    { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
+    { "src": "/manifest.json", "dest": "/public/manifest.json" },
+    { "src": "/(.*)", "headers": {"cache-control": "s-maxage=0"}, "dest": "/public/index.html" }
+  ]
+}
