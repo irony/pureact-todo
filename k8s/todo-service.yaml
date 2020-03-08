@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo
+spec:
+  ports:
+  - port: 3000
+  type: LoadBalancer
+  selector:
+    app: todo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo
+spec:
+  selector:
+    matchLabels:
+      app: todo
+  template:
+    metadata:
+      labels:
+        app: todo
+    spec:
+      containers:
+      - name: todo
+        image: irony/pureact-todo
+        ports:
+        - containerPort: 3000
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: todo-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - todo.snowflake.cash
+    secretName: snowflake-prod-tls
+  rules:
+  - host: todo.snowflake.cash
+    http:
+      paths:
+      - backend:
+          serviceName: todo
+          servicePort: 3000

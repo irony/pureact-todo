@@ -2,7 +2,7 @@
   "name": "pureact-todo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://pureact-todo-hfnljqkpst.now.sh",
+  "homepage": "https://todo.snowflake.cash",
   "dependencies": {
     "pureact": "^1.2.0",
     "todomvc-app-css": "^2.2.0"

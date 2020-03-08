@@ -1,4 +1,7 @@
-web:
-  image: irony/pureact-todo
-  ports:
-    - 3000:3000
+version: "2"
+services: 
+  todo:
+    image: irony/pureact-todo
+    build: .
+    ports:
+      - 3000:3000

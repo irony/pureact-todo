@@ -1,0 +1,11 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+metadata:
+  name: pureact-todo
+build:
+  artifacts:
+  - image: irony/pureact-todo
+deploy:
+  kubectl:
+    manifests:
+    - k8s/todo-service.yaml
