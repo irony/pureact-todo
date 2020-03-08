@@ -8,15 +8,12 @@
     "todomvc-app-css": "^2.2.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
+    "@babel/core": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "parcel-bundler": "^1.12.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "now-build": "react-scripts build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "start": "parcel src/index.html -p 3000",
+    "build": "parcel build -p 3000"
   }
 }
