@@ -21,4 +21,4 @@ This is a very simple example app to show how to structure a simple todo app wit
 
 ## Demo
 
-[https://pureact-todo.irony.now.sh](https://pureact-todo.irony.now.sh)
+[Demo](https://todo.snowflake.cash)
