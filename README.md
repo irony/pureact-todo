@@ -2,6 +2,10 @@
 
 This is a very simple example app to show how to structure a simple todo app with Pureact.
 
+## Demo
+[Try it out!](https://pureact-todo-3udd.now.sh)
+
+
 ## How to get started
 
 1. Clone the repo
