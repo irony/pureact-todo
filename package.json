@@ -8,7 +8,7 @@
     "todomvc-app-css": "^2.2.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -18,5 +18,17 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
